@@ -44,8 +44,10 @@ From within the [`backend`](/backend) directory first ensure you are working usi
 
 To run the server, execute:
 
-```
-flask run --reload
+```bash
+export FLASK_APP=flaskr
+export FLASK_ENV=development
+flask run
 ```
 
 The `--reload` flag will detect file changes and restart the server automatically.
