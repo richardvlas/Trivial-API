@@ -109,7 +109,7 @@ The API will return the following error types when requests fail:
 #### GET /categories
 
 - General: 
-  - Returns a list of categories
+  - Returns a list of categories and success value.
 
 - Sample: 
   - `curl http://127.0.0.1:5000/categories`
