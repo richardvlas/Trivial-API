@@ -10,6 +10,31 @@ This project is a demonstration of how to develop and use API and API documentat
 
 By completing this trivia app, various abilities such as to structure plan, implement, and test an API are demonstrated - skills essential for enabling any future applications to communicate with others.
 
+## Getting Started - Frontend
+The frontend is designed to work with [Flask-based Backend](/backend). First the backend needed to be developed, the code tested using Postman or curl and the endpoints in the frontend updated, then the frontend should integrate smoothly.
+
+### Installing Dependencies
+
+1. **Installing Node and NPM**
+  <br>This project depends on Nodejs and Node Package Manager (NPM). Before continuing, you must download and install Node (the download includes NPM) from https://nodejs.com/en/download.
+
+2. **Installing project dependencies**
+  <br>This project uses NPM to manage software dependencies. NPM Relies on the package.json file located in the [`frontend`](/frontend) directory of this repository. After cloning, open your terminal and run:
+
+```bash
+npm install
+```
+  tip: **npm** i is shorthand for **npm install**
+  
+### Running Your Frontend in Dev Mode
+The frontend app was built using create-react-app. In order to run the app in development mode use npm start. You can change the script in the package.json file.
+
+Open http://localhost:3000 to view it in the browser. The page will reload if you make edits.
+
+```bash
+npm start
+```
+
 ## Getting Started - Backend
 
 ### Installing Dependencies
@@ -50,23 +75,17 @@ export FLASK_ENV=development
 flask run
 ```
 
-The `--reload` flag will detect file changes and restart the server automatically.
+### Testing
+To run the tests, run
 
-## Getting Started - Frontend
-The frontend is designed to work with [Flask-based Backend](/backend). First the backend needed to be developed, the code tested using Postman or curl and the endpoints in the frontend updated, then the frontend should integrate smoothly.
-
-### Installing Dependencies
-
-1. **Installing Node and NPM**
-  <br>This project depends on Nodejs and Node Package Manager (NPM). Before continuing, you must download and install Node (the download includes NPM) from https://nodejs.com/en/download.
-
-2. **Installing project dependencies**
-  <br>This project uses NPM to manage software dependencies. NPM Relies on the package.json file located in the [`frontend`](/frontend) directory of this repository. After cloning, open your terminal and run:
-
-```bash
-npm install
 ```
-  tip: **npm** i is shorthand for **npm install**
+dropdb trivia_test
+createdb trivia_test
+psql trivia_test < trivia.psql
+python test_flaskr.py
+```
+
+
 
 ### Tests and how to run them
 
