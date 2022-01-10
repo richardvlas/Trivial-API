@@ -19,7 +19,7 @@ By completing this trivia app, various abilities such as to structure plan, impl
 
 3. **PIP Dependencies** - Once you have your virtual environment setup and running, install dependencies by naviging to the [`backend`](/backend) directory and running:
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
@@ -35,7 +35,7 @@ This will install all of the required packages we selected within the [`requirem
 ### Database Setup
 With Postgres running, restore a database using the trivia.psql file provided. From the backend folder in terminal run:
 
-```
+```bash
 psql trivia < trivia.psql
 ```
 
@@ -53,8 +53,20 @@ flask run
 The `--reload` flag will detect file changes and restart the server automatically.
 
 ## Getting Started - Frontend
+The frontend is designed to work with [Flask-based Backend](/backend). First the backend needed to be developed, the code tested using Postman or curl and the endpoints in the frontend updated, then the frontend should integrate smoothly.
 
 ### Installing Dependencies
+
+1. **Installing Node and NPM**
+  <br>This project depends on Nodejs and Node Package Manager (NPM). Before continuing, you must download and install Node (the download includes NPM) from https://nodejs.com/en/download.
+
+2. **Installing project dependencies**
+  <br>This project uses NPM to manage software dependencies. NPM Relies on the package.json file located in the [`frontend`](/frontend) directory of this repository. After cloning, open your terminal and run:
+
+```bash
+npm install
+```
+  tip: **npm** i is shorthand for **npm install**
 
 ### Tests and how to run them
 
