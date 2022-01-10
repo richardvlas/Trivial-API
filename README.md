@@ -58,10 +58,36 @@ This will install all of the required packages we selected within the [`requirem
 - [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/) is the extension we'll use to handle cross origin requests from our frontend server.
 
 ### Database Setup
-With Postgres running, restore a database using the trivia.psql file provided. From the backend folder in terminal run:
+
+In this section, we describe how to start a PostgreSQL server. The instructions apply for Linux and the first step is to install PostgreSQL
 
 ```bash
-psql trivia < trivia.psql
+sudo apt-get update
+sudo apt-get install postgresql
+```
+
+Next start the PostgreSQL server by typing:
+
+```bash
+sudo service postgresql start
+```
+
+By default, the server initialize a user called `postgres` without any password. The following command will assign a new password:
+
+```bash
+sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
+```
+
+Now that PostgreSQL is installed and runs, create a new database named `trivia`:
+
+```bash
+createdb -U postgres trivia
+```
+
+Lastly with Postgres running, restore/populate a database using the trivia.psql file provided. From the backend folder in terminal run:
+
+```bash
+psql -d trivia -U postgres -a -f trivia.psql
 ```
 
 ### Running the server
