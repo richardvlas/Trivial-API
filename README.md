@@ -295,7 +295,7 @@ The API will return the following error types when requests fail:
         'category': str,
     }
     ```
-  - Returns: Does not return any new data
+  - Returns: id of the newly created question and total_questions stored in the table
 
 - Sample request: 
   ```
@@ -311,3 +311,46 @@ The API will return the following error types when requests fail:
     "total_questions": 19
   }
   ```
+  
+#### POST '/questions'
+
+- General:   
+  - Sends a post request in order to search for a specific question by search term 
+  - Request Body: 
+    ```
+    {
+      'searchTerm': 'this is the term the user is looking for'
+    }
+    ```
+  - Returns: any array of questions, a number of total_questions that met the search term and the current category string 
+
+- Sample request: 
+  ```
+  curl http://127.0.0.1:5000/questions/search -X POST -H "Content-Type: application/json" -d '{"searchTerm": "title"}'
+  ```
+
+- Sample response: 
+
+  ```
+  {
+    "questions": [
+      {
+        "answer": "Maya Angelou", 
+        "category": 4, 
+        "difficulty": 2, 
+        "id": 5, 
+        "question": "Whose autobiography is entitled 'I Know Why the Caged Bird Sings'?"
+      }, 
+      {
+        "answer": "Edward Scissorhands", 
+        "category": 5, 
+        "difficulty": 3, 
+        "id": 6, 
+        "question": "What was the title of the 1990 fantasy directed by Tim Burton about a young man with multi-bladed appendages?"
+      }
+    ], 
+    "success": true, 
+    "total_questions": 2
+  }
+  ```
+
