@@ -269,3 +269,25 @@ The API will return the following error types when requests fail:
   "success": true
 }
 ```
+
+#### POST '/questions'
+
+- General:   
+  - Sends a post request in order to add a new question
+  - Request Body: 
+    ```
+    {
+        'question':  'Type a new question string',
+        'answer':  'Type a new answer string',
+        'difficulty': int,
+        'category': str,
+    }
+    ```
+  - Returns: Does not return any new data
+
+- Sample: 
+  - `curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{"question": "What currency does Czech Republic use?", "answer": "Czech Koruna", "difficulty": 2, "category: "3"}'`
+
+```
+TODO: add sample response
+```
