@@ -139,22 +139,26 @@ The API will return the following error types when requests fail:
   - Request Arguments: `None`
   - Returns: An object with a key, `categories`, that contains an object of `id:category_string` (key:value pairs) and a `success` value 
 
-- Sample: 
-  - `curl http://127.0.0.1:5000/categories`
+- Sample request:
+  ```
+  curl http://127.0.0.1:5000/categories
+  ```
 
-```
-{
-  "categories": {
-    "1": "Science", 
-    "2": "Art", 
-    "3": "Geography", 
-    "4": "History", 
-    "5": "Entertainment", 
-    "6": "Sports"
-  }, 
-  "success": true
-}
-```
+- Sample response: 
+
+  ```
+  {
+    "categories": {
+      "1": "Science", 
+      "2": "Art", 
+      "3": "Geography", 
+      "4": "History", 
+      "5": "Entertainment", 
+      "6": "Sports"
+    }, 
+    "success": true
+  }
+  ```
 
 #### GET '/questions?page=<int:page_number>'
 
@@ -163,95 +167,99 @@ The API will return the following error types when requests fail:
   - Request Arguments: `page` - integer
   - Returns: An object with number of paginated questions given by `QUESTIONS_PER_PAGE` constant equal to 10 in this case, total questions and object including all categories
 
-- Sample: 
-  - `curl http://127.0.0.1:5000/questions`
+- Sample request: 
+  ```
+  curl http://127.0.0.1:5000/questions
+  ```
 
-```
-{
-  "categories": {
-    "1": "Science", 
-    "2": "Art", 
-    "3": "Geography", 
-    "4": "History", 
-    "5": "Entertainment", 
-    "6": "Sports"
-  }, 
-  "questions": [
-    {
-      "answer": "Apollo 13", 
-      "category": 5, 
-      "difficulty": 4, 
-      "id": 2, 
-      "question": "What movie earned Tom Hanks his third straight Oscar nomination, in 1996?"
+- Sample response: 
+
+  ```
+  {
+    "categories": {
+      "1": "Science", 
+      "2": "Art", 
+      "3": "Geography", 
+      "4": "History", 
+      "5": "Entertainment", 
+      "6": "Sports"
     }, 
-    {
-      "answer": "Tom Cruise", 
-      "category": 5, 
-      "difficulty": 4, 
-      "id": 4, 
-      "question": "What actor did author Anne Rice first denounce, then praise in the role of her beloved Lestat?"
-    }, 
-    {
-      "answer": "Maya Angelou", 
-      "category": 4, 
-      "difficulty": 2, 
-      "id": 5, 
-      "question": "Whose autobiography is entitled 'I Know Why the Caged Bird Sings'?"
-    }, 
-    {
-      "answer": "Edward Scissorhands", 
-      "category": 5, 
-      "difficulty": 3, 
-      "id": 6, 
-      "question": "What was the title of the 1990 fantasy directed by Tim Burton about a young man with multi-bladed appendages?"
-    }, 
-    {
-      "answer": "Muhammad Ali", 
-      "category": 4, 
-      "difficulty": 1, 
-      "id": 9, 
-      "question": "What boxer's original name is Cassius Clay?"
-    }, 
-    {
-      "answer": "Brazil", 
-      "category": 6, 
-      "difficulty": 3, 
-      "id": 10, 
-      "question": "Which is the only team to play in every soccer World Cup tournament?"
-    }, 
-    {
-      "answer": "Uruguay", 
-      "category": 6, 
-      "difficulty": 4, 
-      "id": 11, 
-      "question": "Which country won the first ever soccer World Cup in 1930?"
-    }, 
-    {
-      "answer": "George Washington Carver", 
-      "category": 4, 
-      "difficulty": 2, 
-      "id": 12, 
-      "question": "Who invented Peanut Butter?"
-    }, 
-    {
-      "answer": "Lake Victoria", 
-      "category": 3, 
-      "difficulty": 2, 
-      "id": 13, 
-      "question": "What is the largest lake in Africa?"
-    }, 
-    {
-      "answer": "The Palace of Versailles", 
-      "category": 3, 
-      "difficulty": 3, 
-      "id": 14, 
-      "question": "In which royal palace would you find the Hall of Mirrors?"
-    }
-  ], 
-  "success": true, 
-  "total_questions": 19
-}
-```
+    "questions": [
+      {
+        "answer": "Apollo 13", 
+        "category": 5, 
+        "difficulty": 4, 
+        "id": 2, 
+        "question": "What movie earned Tom Hanks his third straight Oscar nomination, in 1996?"
+      }, 
+      {
+        "answer": "Tom Cruise", 
+        "category": 5, 
+        "difficulty": 4, 
+        "id": 4, 
+        "question": "What actor did author Anne Rice first denounce, then praise in the role of her beloved Lestat?"
+      }, 
+      {
+        "answer": "Maya Angelou", 
+        "category": 4, 
+        "difficulty": 2, 
+        "id": 5, 
+        "question": "Whose autobiography is entitled 'I Know Why the Caged Bird Sings'?"
+      }, 
+      {
+        "answer": "Edward Scissorhands", 
+        "category": 5, 
+        "difficulty": 3, 
+        "id": 6, 
+        "question": "What was the title of the 1990 fantasy directed by Tim Burton about a young man with multi-bladed appendages?"
+      }, 
+      {
+        "answer": "Muhammad Ali", 
+        "category": 4, 
+        "difficulty": 1, 
+        "id": 9, 
+        "question": "What boxer's original name is Cassius Clay?"
+      }, 
+      {
+        "answer": "Brazil", 
+        "category": 6, 
+        "difficulty": 3, 
+        "id": 10, 
+        "question": "Which is the only team to play in every soccer World Cup tournament?"
+      }, 
+      {
+        "answer": "Uruguay", 
+        "category": 6, 
+        "difficulty": 4, 
+        "id": 11, 
+        "question": "Which country won the first ever soccer World Cup in 1930?"
+      }, 
+      {
+        "answer": "George Washington Carver", 
+        "category": 4, 
+        "difficulty": 2, 
+        "id": 12, 
+        "question": "Who invented Peanut Butter?"
+      }, 
+      {
+        "answer": "Lake Victoria", 
+        "category": 3, 
+        "difficulty": 2, 
+        "id": 13, 
+        "question": "What is the largest lake in Africa?"
+      }, 
+      {
+        "answer": "The Palace of Versailles", 
+        "category": 3, 
+        "difficulty": 3, 
+        "id": 14, 
+        "question": "In which royal palace would you find the Hall of Mirrors?"
+      }
+    ], 
+    "success": true, 
+    "total_questions": 19
+  }
+  ```
 
 #### DELETE '/questions/<int:id>'
 
@@ -260,12 +268,128 @@ The API will return the following error types when requests fail:
   - Request Arguments: `id` - integer
   - Returns: the id of the question if it exists, otherwise the appropriate HTTP status code
 
-- Sample: 
-  - `curl http://127.0.0.1:5000/questions/21 -X DELETE`
+- Sample request: 
+  ```
+  curl http://127.0.0.1:5000/questions/21 -X DELETE`
+  ```
 
-```
-{
-  "deleted": 21, 
-  "success": true
-}
-```
+- Sample response: 
+
+  ```
+  {
+    "deleted": 21, 
+    "success": true
+  }
+  ```
+
+#### POST '/questions'
+
+- General:   
+  - Sends a post request in order to add a new question
+  - Request Body: 
+    ```
+    {
+        'question':  'Type a new question string',
+        'answer':  'Type a new answer string',
+        'difficulty': int,
+        'category': str,
+    }
+    ```
+  - Returns: id of the newly created question and total_questions stored in the table
+
+- Sample request: 
+  ```
+  curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{"question": "What currency does Czech Republic use?", "answer": "Czech Koruna", "difficulty": 2, "category": "3"}'
+  ```
+
+- Sample response: 
+
+  ```
+  {
+    "created": 24, 
+    "success": true, 
+    "total_questions": 19
+  }
+  ```
+  
+#### POST '/questions/search'
+
+- General:   
+  - Sends a post request in order to search for a specific question by search term 
+  - Request Body: 
+    ```
+    {
+      'searchTerm': 'this is the term the user is looking for'
+    }
+    ```
+  - Returns: any array of questions, a number of total_questions that met the search term and the current category string 
+
+- Sample request: 
+  ```
+  curl http://127.0.0.1:5000/questions/search -X POST -H "Content-Type: application/json" -d '{"searchTerm": "title"}'
+  ```
+
+- Sample response: 
+
+  ```
+  {
+    "questions": [
+      {
+        "answer": "Maya Angelou", 
+        "category": 4, 
+        "difficulty": 2, 
+        "id": 5, 
+        "question": "Whose autobiography is entitled 'I Know Why the Caged Bird Sings'?"
+      }, 
+      {
+        "answer": "Edward Scissorhands", 
+        "category": 5, 
+        "difficulty": 3, 
+        "id": 6, 
+        "question": "What was the title of the 1990 fantasy directed by Tim Burton about a young man with multi-bladed appendages?"
+      }
+    ], 
+    "success": true, 
+    "total_questions": 2
+  }
+  ```
+
+#### GET '/categories/<int:id>/questions'
+
+- General:
+  - Fetches questions for a cateogry specified by id request argument 
+  - Request Arguments: `id` - integer
+  - Returns: An object with questions for the specified category, total questions, and current category string 
+
+- Sample request: 
+  ```
+  curl http://127.0.0.1:5000/categories/1/questions
+  ```
+
+- Sample response: 
+
+  ```
+  {
+    "currentCategory": "Science", 
+    "questions": [
+      {
+        "answer": "The Liver", 
+        "category": 1, 
+        "difficulty": 4, 
+        "id": 20, 
+        "question": "What is the heaviest organ in the human body?"
+      }, 
+      {
+        "answer": "Blood", 
+        "category": 1, 
+        "difficulty": 4, 
+        "id": 22, 
+        "question": "Hematology is a branch of medicine involving the study of what?"
+      }
+    ], 
+    "success": true, 
+    "total_questions": 2
+  }
+  ```
+
+
