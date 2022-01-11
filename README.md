@@ -156,7 +156,7 @@ The API will return the following error types when requests fail:
 }
 ```
 
-#### GET '/questions?page=<page_number>'
+#### GET '/questions?page=<int:page_number>'
 
 - General: 
   - Fetches a paginated set of questions, a total number of questions and all categories 
@@ -250,5 +250,22 @@ The API will return the following error types when requests fail:
   ], 
   "success": true, 
   "total_questions": 19
+}
+```
+
+#### DELETE '/questions/<int:id>'
+
+- General:   
+  - Deletes a specified question using the id of the question
+  - Request Arguments: `id` - integer
+  - Returns: the id of the question if it exists, otherwise the appropriate HTTP status code
+
+- Sample: 
+  - `curl http://127.0.0.1:5000/questions/21 -X DELETE`
+
+```
+{
+  "deleted": 21, 
+  "success": true
 }
 ```
