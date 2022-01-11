@@ -86,20 +86,40 @@ def create_app(test_config=None):
         categories = {category.id: category.type for category in data}
 
         return jsonify({
-          'success': True,
-          'questions': current_question,
-          'total_questions': total_questions,
-          'categories': categories
+            'success': True,
+            'questions': current_question,
+            'total_questions': total_questions,
+            'categories': categories
         })
 
 
     '''
-    @TODO: 
     Create an endpoint to DELETE question using a question ID. 
 
     TEST: When you click the trash icon next to a question, the question will be removed.
     This removal will persist in the database and when you refresh the page. 
     '''
+    @app.route('/questions/<int:id>', methods=['GET', 'DELETE'])
+    def delete_question(id):
+        try: 
+            question = Question.query.filter(Question.id == id).one_or_none()
+
+            # If no question found (404 Not Found)
+            if question is None:
+                abort(404)
+
+            # Delete the question
+            question.delete()                
+
+            return jsonify({
+                'success': True,
+                'deleted': id
+            })
+          
+        except:
+            # If backend was not able to process (422 Unprocessable Entity)
+            abort(422)
+
 
     '''
     @TODO: 
