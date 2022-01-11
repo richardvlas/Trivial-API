@@ -155,3 +155,18 @@ The API will return the following error types when requests fail:
   "success": true
 }
 ```
+
+#### GET '/questions?page=<page_number>'
+
+- General: 
+  - Fetches a paginated set of questions, a total number of questions and all categories 
+  - Request Arguments: `page` - integer
+  - Returns: An object with number of paginated questions given by `QUESTIONS_PER_PAGE` constant equal to 10 in this case, total questions and object including all categories
+  - Returns: An object with 10 paginated questions, total questions, object including all categories, and current category string
+
+- Sample: 
+  - `curl http://127.0.0.1:5000/questions`
+
+```
+TODO: Add sample response
+```
