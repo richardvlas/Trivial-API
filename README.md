@@ -392,4 +392,32 @@ The API will return the following error types when requests fail:
   }
   ```
 
+#### POST '/quizzes'
+
+- General:   
+  - Sends a POST endpoint to get questions to play the quiz. 
+    This endpoint should take category and previous question parameters 
+    and return a random questions within the given category, 
+    if provided, and that is not one of the previous questions. 
+  - Request Body: 
+    ```
+    {
+      'previous_questions':  an array of question id's such as [1, 4, 20, 15],
+      'quiz_category': a string of the current category or dict {"type": "Art", "id": 2} when coming from front-end
+    }
+    ```
+  - Returns: a random question in specified category not present in previous_questions list
+
+- Sample request: 
+  ```
+  curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d '{"previous_questions": [16, 18], "quiz_category": 2}'
+  ```
+
+- Sample response: 
+
+  ```
+  TODO
+  ```
+
+
 
