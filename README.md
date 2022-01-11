@@ -312,7 +312,7 @@ The API will return the following error types when requests fail:
   }
   ```
   
-#### POST '/questions'
+#### POST '/questions/search'
 
 - General:   
   - Sends a post request in order to search for a specific question by search term 
@@ -353,4 +353,43 @@ The API will return the following error types when requests fail:
     "total_questions": 2
   }
   ```
+
+#### GET '/categories/<int:id>/questions'
+
+- General:
+  - Fetches questions for a cateogry specified by id request argument 
+  - Request Arguments: `id` - integer
+  - Returns: An object with questions for the specified category, total questions, and current category string 
+
+- Sample request: 
+  ```
+  curl http://127.0.0.1:5000/categories/1/questions
+  ```
+
+- Sample response: 
+
+  ```
+  {
+    "currentCategory": "Science", 
+    "questions": [
+      {
+        "answer": "The Liver", 
+        "category": 1, 
+        "difficulty": 4, 
+        "id": 20, 
+        "question": "What is the heaviest organ in the human body?"
+      }, 
+      {
+        "answer": "Blood", 
+        "category": 1, 
+        "difficulty": 4, 
+        "id": 22, 
+        "question": "Hematology is a branch of medicine involving the study of what?"
+      }
+    ], 
+    "success": true, 
+    "total_questions": 2
+  }
+  ```
+
 
