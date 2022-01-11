@@ -4,6 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import random
 
+from sqlalchemy.sql.expression import select
+
 from models import setup_db, Question, Category
 
 QUESTIONS_PER_PAGE = 10
@@ -57,7 +59,6 @@ def create_app(test_config=None):
         })
 
 
-
     ''' 
     Create an endpoint to handle GET requests for questions, 
     including pagination (every 10 questions). 
@@ -79,7 +80,7 @@ def create_app(test_config=None):
         
         # If no questions found (404 Not Found)
         if len(current_question) == 0:
-          abort(404)
+            abort(404)
 
         # get all categories
         data = Category.query.order_by(Category.id).all()        
@@ -99,7 +100,7 @@ def create_app(test_config=None):
     TEST: When you click the trash icon next to a question, the question will be removed.
     This removal will persist in the database and when you refresh the page. 
     '''
-    @app.route('/questions/<int:id>', methods=['GET', 'DELETE'])
+    @app.route('/questions/<int:id>', methods=['DELETE'])
     def delete_question(id):
         try: 
             question = Question.query.filter(Question.id == id).one_or_none()
@@ -122,7 +123,6 @@ def create_app(test_config=None):
 
 
     '''
-    @TODO: 
     Create an endpoint to POST a new question, 
     which will require the question and answer text, 
     category, and difficulty score.
@@ -131,9 +131,34 @@ def create_app(test_config=None):
     the form will clear and the question will appear at the end of the last page
     of the questions list in the "List" tab.  
     '''
+    @app.route('/questions', methods=['POST'])
+    def create_question():
+        # Get data from request body 
+        data = request.get_json()
+
+        new_question = data.get('question')
+        new_answer = data.get('answer')
+        new_category = data.get('category')
+        new_difficulty = data.get('difficulty')
+
+        try:
+            # create and insert a new question
+            question = Question(question=new_question, answer=new_answer,
+                category=new_category, difficulty=new_difficulty)
+            question.insert()
+
+            return jsonify({
+                'success': True,
+                'created': question.id,
+                'total_questions': len(Question.query.all())
+            })
+
+        except:
+            # If backend was not able to process (422 Unprocessable Entity)
+            abort(422)
+
 
     '''
-    @TODO: 
     Create a POST endpoint to get questions based on a search term. 
     It should return any questions for whom the search term 
     is a substring of the question. 
@@ -142,6 +167,27 @@ def create_app(test_config=None):
     only question that include that string within their question. 
     Try using the word "title" to start. 
     '''
+    @app.route('/questions/search', methods=['POST'])
+    def search_questions():
+        # Get data from request body 
+        body = request.get_json()
+        search = body.get('searchTerm', None)
+        
+        # query the database with search term string
+        selection = Question.query.filter(Question.question.ilike(f"%{search}%")).all()
+
+        # If no search term was added found (404 Not Found)
+        if len(selection) == 0:
+            abort(404)
+        else:
+            current_question = paginated_questions(request, selection)
+
+        return jsonify({
+            'success': True,
+            'questions': current_question,
+            'total_questions': len(selection)
+        })
+
 
     '''
     @TODO: 
