@@ -143,5 +143,15 @@ The API will return the following error types when requests fail:
   - `curl http://127.0.0.1:5000/categories`
 
 ```
-TODO: Add the HTTP response for categories
+{
+  "categories": {
+    "1": "Science", 
+    "2": "Art", 
+    "3": "Geography", 
+    "4": "History", 
+    "5": "Entertainment", 
+    "6": "Sports"
+  }, 
+  "success": true
+}
 ```
