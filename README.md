@@ -136,8 +136,8 @@ The API will return the following error types when requests fail:
 
 - General: 
   - Fetches a dictionary of all categories in which the keys are the ids and the value is the corresponding string of the category
-  - Request Arguments: None
-  - Returns: An object with a key, categories, that contains an object of id:category_string (key:value pairs). 
+  - Request Arguments: `None`
+  - Returns: An object with a key, `categories`, that contains an object of `id:category_string` (key:value pairs) and a `success` value 
 
 - Sample: 
   - `curl http://127.0.0.1:5000/categories`
