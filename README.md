@@ -416,7 +416,16 @@ The API will return the following error types when requests fail:
 - Sample response: 
 
   ```
-  TODO
+  {
+    "question": {
+      "answer": "Mona Lisa", 
+      "category": 2, 
+      "difficulty": 3, 
+      "id": 17, 
+      "question": "La Giaconda is better known as what?"
+    }, 
+    "success": true
+  }
   ```
 
 
