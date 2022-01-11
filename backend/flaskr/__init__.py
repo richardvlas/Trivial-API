@@ -222,7 +222,6 @@ def create_app(test_config=None):
 
 
     '''
-    @TODO: 
     Create a POST endpoint to get questions to play the quiz. 
     This endpoint should take category and previous question parameters 
     and return a random questions within the given category, 
@@ -232,11 +231,58 @@ def create_app(test_config=None):
     one question at a time is displayed, the user is allowed to answer
     and shown whether they were correct or not. 
     '''
+    @app.route('/quizzes', methods=['POST'])
+    def play_quiz():
+        # Get data from request body 
+        data = request.get_json()
 
-    '''
-    @TODO: 
-    Create error handlers for all expected errors including 404 and 422. 
-    '''
+        try:
+            previous_questions = data.get('previous_questions', None)
+            quiz_category = data.get('quiz_category', None)
+            
+            if isinstance(quiz_category, dict):
+                # if request body is dict of the form such 
+                # as: {"type": "Art", "id": 2} then select only 'id'
+                quiz_category = quiz_category['id']
+
+            if quiz_category == 0:
+                # if category id is 0, get all questions previously not selected
+                # from all categories
+                questions = Question.query.all()
+            else:
+                questions = Question.query.filter(
+                    Question.category == quiz_category).all()
+            
+            questions_not_asked = [question.format() for question in questions 
+                if question.id not in previous_questions]
+                   
+            new_question = random.choice(questions_not_asked)
+            
+            return jsonify({
+                  'success': True,
+                  'question': new_question
+            })
+
+        except:
+            abort(422)
+
+
+    # Create error handlers for all expected errors including 404 and 422. 
+    @app.errorhandler(404)
+    def not_found(error):
+        return jsonify({
+            'success': False,
+            'error': 404,
+            'message': 'resource not found'
+        }), 404
+
+    @app.errorhandler(422)
+    def unprocessable(error):
+        return jsonify({
+            'success': False,
+            'error': 422,
+            'message': 'unprocessable'
+        }), 422
 
 
     return app
