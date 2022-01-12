@@ -136,12 +136,15 @@ def create_app(test_config=None):
         # Get data from request body 
         data = request.get_json()
 
-        new_question = data.get('question')
-        new_answer = data.get('answer')
-        new_category = data.get('category')
-        new_difficulty = data.get('difficulty')
+        if not data:
+            abort(422)
 
         try:
+            new_question = data.get('question')
+            new_answer = data.get('answer')
+            new_category = data.get('category')
+            new_difficulty = data.get('difficulty')
+            
             # create and insert a new question
             question = Question(question=new_question, answer=new_answer,
                 category=new_category, difficulty=new_difficulty)
@@ -276,6 +279,14 @@ def create_app(test_config=None):
             'error': 404,
             'message': 'resource not found'
         }), 404
+
+    @app.errorhandler(405)
+    def not_found(error):
+        return jsonify({
+            'success': False,
+            'error': 405,
+            'message': 'method not allowed'
+        }), 405
 
     @app.errorhandler(422)
     def unprocessable(error):
