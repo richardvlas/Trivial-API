@@ -333,6 +333,7 @@ The API will return the following error types when requests fail:
 
   ```
   {
+    "current_category": null,
     "questions": [
       {
         "answer": "Maya Angelou", 
