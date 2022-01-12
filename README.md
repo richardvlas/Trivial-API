@@ -121,14 +121,18 @@ python test_flaskr.py
 Errors are returned as JSON objects in the following format:
 
 ```
-TODO: Add the format
+{
+  "error": "error code", 
+  "message": "error message string", 
+  "success": false
+}
 ```
 
 The API will return the following error types when requests fail:
 
-- 400: Bad Request
-- 404: Resource Not Found
-- 422: Not Processable
+- 404: resource not found
+- 405: method not allowed
+- 422: unprocessable
 
 ### Endpoints
 
