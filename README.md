@@ -270,7 +270,7 @@ The API will return the following error types when requests fail:
 
 - Sample request: 
   ```
-  curl http://127.0.0.1:5000/questions/21 -X DELETE`
+  curl http://127.0.0.1:5000/questions/21 -X DELETE
   ```
 
 - Sample response: 
@@ -333,6 +333,7 @@ The API will return the following error types when requests fail:
 
   ```
   {
+    "current_category": null,
     "questions": [
       {
         "answer": "Maya Angelou", 
